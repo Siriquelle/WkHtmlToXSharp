@@ -38,9 +38,7 @@ using SysAssembly = System.Reflection.Assembly;
 namespace WkHtmlToXSharp
 {
 	internal static class LibsHelper
-	{
-		private static readonly global::Common.Logging.ILog _Log = global::Common.Logging.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+	{		
 		private static readonly Assembly Assembly = SysAssembly.GetExecutingAssembly();
 		private static readonly string _OutputPath = Path.GetDirectoryName(Assembly.GetCallingAssembly().Location);
 
@@ -163,12 +161,9 @@ namespace WkHtmlToXSharp
 
 				if (IsFileLocked(fileName))
 				{
-					_Log.WarnFormat("Unable to update {0}: file in use!", fileName);
 					return;
 				}
-			}
-
-			_Log.InfoFormat("Deploying embedded {0} to {1}..", Path.GetFileName(fileName), _OutputPath);
+			}			
 
 			var res = Assembly.GetManifestResourceStream(resource);
 

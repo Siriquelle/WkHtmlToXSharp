@@ -31,16 +31,32 @@ using System.Text;
 
 namespace WkHtmlToXSharp
 {
-	public class PdfObjectSettings
-	{
-		private WebSettings _webSettings = new WebSettings();
-		private LoadSettings _loadSettings = new LoadSettings();
+    public class PdfHeaderFooter
+    {
+        public int FontSize { get; set; }
+        public string FontName { get; set; }
+        public string Right { get; set; }
+        public string Left { get; set; }
+        public string Center { get; set; }
+        public bool Line { get; set; }
+        public string HtmlUrl { get; set; }
+        public float Spacing { get; set; }
+    }
 
-		public string Page { get; set; }
+    public class PdfObjectSettings
+    {
+        private WebSettings _webSettings = new WebSettings();
+        private LoadSettings _loadSettings = new LoadSettings();
+        private PdfHeaderFooter _header = new PdfHeaderFooter();
+        private PdfHeaderFooter _footer = new PdfHeaderFooter();
 
-		public WebSettings Web { get { return _webSettings; } }
-		public LoadSettings Load { get { return _loadSettings; } }
+        public string Page { get; set; }
 
-		// TODO: Add remaining settings..
-	}
+        public WebSettings Web { get { return _webSettings; } }
+        public LoadSettings Load { get { return _loadSettings; } }
+        public PdfHeaderFooter Header { get { return _header; } }
+        public PdfHeaderFooter Footer { get { return _footer; } }
+
+        // TODO: Add remaining settings..
+    }
 }

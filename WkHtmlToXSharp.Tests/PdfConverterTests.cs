@@ -13,9 +13,7 @@ namespace WkHtmlToXSharp.Tests
 {
 	[TestFixture]
 	public class PdfConverterTest
-	{
-		private static readonly global::Common.Logging.ILog _Log = global::Common.Logging.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+	{		
 		public static string SimplePageFile = null;
 		public static int count = 0;
 
@@ -41,13 +39,7 @@ namespace WkHtmlToXSharp.Tests
 
 		private MultiplexingConverter _GetConverter()
 		{
-			var obj = new MultiplexingConverter();
-			obj.Begin += (s,e) => _Log.DebugFormat("Conversion begin, phase count: {0}", e.Value);
-			obj.Error += (s, e) => _Log.Error(e.Value);
-			obj.Warning += (s, e) => _Log.Warn(e.Value);
-			obj.PhaseChanged += (s, e) => _Log.InfoFormat("PhaseChanged: {0} - {1}", e.Value, e.Value2);
-			obj.ProgressChanged += (s, e) => _Log.InfoFormat("ProgressChanged: {0} - {1}", e.Value, e.Value2);
-			obj.Finished += (s, e) => _Log.InfoFormat("Finished: {0}", e.Value ? "success" : "failed!");
+			var obj = new MultiplexingConverter();			
 			return obj;
 		}
 
@@ -55,7 +47,7 @@ namespace WkHtmlToXSharp.Tests
 		{
 			using (var wk = _GetConverter())
 			{
-				_Log.DebugFormat("Performing conversion..");
+				
 
 				wk.GlobalSettings.Margin.Top = "0cm";
 				wk.GlobalSettings.Margin.Bottom = "0cm";
@@ -94,7 +86,7 @@ namespace WkHtmlToXSharp.Tests
 
         	void ThreadStart(object arg)
         	{
-				_Log.DebugFormat("New thread {0}", arg);
+				
 
 				var tmp = arg as ThreadData;
 				try
@@ -146,7 +138,7 @@ namespace WkHtmlToXSharp.Tests
 				{
 					error = true;
 					var tid = tmp.Thread.ManagedThreadId;
-					_Log.Error("Thread-" + tid + " failed!", tmp.Exception);
+					
 				}
 			}
 
@@ -157,8 +149,7 @@ namespace WkHtmlToXSharp.Tests
 		public void ConvertFromString()
 		{
 			using (var wk = _GetConverter())
-			{
-				_Log.DebugFormat("Performing conversion..");
+			{				
 
 				using (var stream = new MemoryStream(Resources.SimplePage_xhtml))
 				using (var sr = new StreamReader(stream))

@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WkHtmlToXSharp</RootNamespace>
     <AssemblyName>WkHtmlToXSharp</AssemblyName>
-    <TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile Condition=" '$(TargetFrameworkProfile)' == '' ">Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile Condition=" '$(TargetFrameworkProfile)' == '' ">
+    </TargetFrameworkProfile>
     <!-- We need a framework full name to use as base artifacts directory name -->
     <TargetFrameworkFullName Condition=" '$(TargetFrameworkProfile)' == '' ">$(TargetFrameworkVersion)</TargetFrameworkFullName>
     <TargetFrameworkFullName Condition=" '$(TargetFrameworkProfile)' != '' ">$(TargetFrameworkVersion)-$(TargetFrameworkProfile)</TargetFrameworkFullName>
@@ -97,9 +98,6 @@
     <AssemblyOriginatorKeyFile>WkHtmlToXSharp.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\Libs\Common.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
